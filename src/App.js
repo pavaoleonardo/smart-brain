@@ -93,11 +93,11 @@ class App extends Component {
   }
 
   calculateFaceLocations = (data) => {
+    const image = document.getElementById('inputimage');
+    const width = Number(image.width);
+    const height = Number(image.height);
     return data.outputs[0].data.regions.map(face => {
       const clarifaiFace = face.region_info.bounding_box;
-      const image = document.getElementById('inputimage');
-      const width = Number(image.width);
-      const height = Number(image.height)
       return {
         leftCol: clarifaiFace.left_col * width,
         topRow: clarifaiFace.top_row * height,
@@ -107,14 +107,11 @@ class App extends Component {
     });
   }
 
-
-
   displayFaceBoxes = (boxes) => {
     this.setState({
       boxes: boxes
     });
   }
-
 
   onInputChange = (event) => {
     this.setState({
@@ -157,7 +154,6 @@ class App extends Component {
             })
             .catch(console.log)
         }
-        console.log(response)
         this.displayFaceBoxes(this.calculateFaceLocations(response))
       })
       .catch(err => console.log(err));
@@ -261,8 +257,8 @@ class App extends Component {
             )
       } <
       /div>
-                                                                                                                                                                                                                                                                                                                                                                                              );
-                                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                            );
+                                                                                                                                                                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                                                                                                                                                                                          
 export default App;
